@@ -1,0 +1,19 @@
+{
+  "name": "lit-protocol-skale",
+  "version": "1.0.0",
+  "main": "index.mjs",
+  "license": "MIT",
+  "dependencies": {
+    "@lit-protocol/auth-browser": "^6.5.3",
+    "@lit-protocol/auth-helpers": "^6.5.3",
+    "@lit-protocol/constants": "^6.5.1",
+    "@lit-protocol/lit-node-client": "^6.5.1",
+    "@lit-protocol/lit-node-client-nodejs": "^6.5.1",
+    "dotenv": "^16.4.5",
+    "ethers": "^5.7.1",
+    "express": "^4.21.0",
+    "lit-js-sdk": "^1.1.250",
+    "node-localstorage": "^3.0.5",
+    "siwe": "^2.3.2"
+  }
+}
