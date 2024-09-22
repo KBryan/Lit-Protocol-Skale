@@ -1,6 +1,9 @@
 import * as LitJsSdkNodeJs from '@lit-protocol/lit-node-client-nodejs';
 import { checkAndSignAuthMessage } from '@lit-protocol/auth-browser';
 import siwe from "siwe";
+import dotenv from 'dotenv/config';
+import { ethers } from 'ethers';
+import { LIT_RPC } from "@lit-protocol/constants";
 
 const client = new LitJsSdkNodeJs.LitNodeClientNodeJs({
     litNetwork: 'datil-test',
@@ -29,8 +32,21 @@ console.log("Returned from SIWE" + createSiweMessage(
     "This is a test statement."
 ));
 
+const dataHex = ethers.utils.hexlify(
+    ethers.utils.toUtf8Bytes('The answer to the Universe is 42.')
+);
+
+console.log("Data Hex: " + dataHex);
+
+const ethersSigner = new ethers.Wallet(
+    process.env.ETHEREUM_PRIVATE_KEY,
+    new ethers.providers.JsonRpcProvider(LIT_RPC.CHRONICLE_YELLOWSTONE)
+);
+
+console.log("Eth Signer: " + ethersSigner.address);
+
 await client.connect();
 
 const authSig = await checkAndSignAuthMessage({
-    chain: '', // add skaleTestnet or skale for mainnet
+    chain: '', // Specify the chain name here, such as 'skaleTestnet' or 'skale' for mainnet
 });
